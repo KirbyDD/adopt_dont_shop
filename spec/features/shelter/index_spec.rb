@@ -11,5 +11,6 @@ RSpec.describe 'As a visitor of the Shelter index page' do
 
     expect(page).to have_content(@shelter1.name)
     expect(page).to have_content(@shelter2.name)
+    expect(page).to have_link("New Shelter")
   end
 end
