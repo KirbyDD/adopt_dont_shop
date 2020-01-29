@@ -1,4 +1,5 @@
 <main>
   <h2><%= @shelter.name %></h2>
   <p><%= "Address: #{@shelter.address} #{@shelter.city}, #{@shelter.state} #{@shelter.zip}" %></p>
+  <%= link_to "Update Shelter", "/shelters/#{@shelter.id}/edit" %>
 </main>

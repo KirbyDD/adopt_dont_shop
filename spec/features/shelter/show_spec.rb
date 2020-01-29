@@ -11,6 +11,7 @@ RSpec.describe 'As a visitor of a shelter show page' do
 
     expect(page).to have_content(@shelter1.name)
     expect(page).to have_content("Address: #{@shelter1.address} #{@shelter1.city}, #{@shelter1.state} #{@shelter1.zip}")
+    expect(page).to have_link("Update Shelter")
 
     expect(page).to_not have_content(@shelter2.name)
     expect(page).to_not have_content("Address: #{@shelter2.address} #{@shelter2.city}, #{@shelter2.state} #{@shelter2.zip}")
