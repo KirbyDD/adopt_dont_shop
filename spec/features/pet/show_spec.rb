@@ -25,7 +25,5 @@ RSpec.describe 'As a visitor', type: :feature do
     expect(page).to_not have_content(pet2.approximate_age)
     expect(page).to_not have_content(pet2.sex)
     expect(page).to_not have_content(pet2.description)
-
-    save_and_open_page
   end
 end
