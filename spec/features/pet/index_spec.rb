@@ -4,13 +4,13 @@ RSpec.describe 'As a visitor' do
   it 'should show a list of all the pets' do
     shelter1 = Shelter.create!(name: "Joe's Shelter", address: "123 Main St.", city: "Dallas", state: "TX", zip: "75341")
     pet1 = shelter1.pets.create!(name: "Tron",
-                       image: "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/13002248/GettyImages-187066830.jpg",
                        approximate_age: 3,
-                       sex: "Male")
+                       sex: "Male",
+                       description: 'Too Cool for School')
     pet2 = shelter1.pets.create!(name: "Kat",
-                      image: "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/13002248/GettyImages-187066830.jpg",
                       approximate_age: 2,
-                      sex: "Female")
+                      sex: "Female",
+                      description: 'Too Cool for School')
 
     visit '/pets'
 
