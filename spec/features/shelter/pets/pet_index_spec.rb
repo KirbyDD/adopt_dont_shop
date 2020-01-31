@@ -8,15 +8,18 @@ RSpec.describe 'As a visitor to a shelters pets show page', type: :feature do
     @pet1 = @shelter1.pets.create!(name: "Tron",
                        image: "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/13002248/GettyImages-187066830.jpg",
                        approximate_age: 3,
-                       sex: "Male")
+                       sex: "Male",
+                       description: 'Too Cool for School')
     @pet2 = @shelter1.pets.create!(name: "Kat",
                       image: "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/13002248/GettyImages-187066830.jpg",
                       approximate_age: 2,
-                      sex: "Female")
+                      sex: "Female",
+                      description: 'Too Cool for School')
     @pet3 = @shelter2.pets.create!(name: "Peppo",
                        image: "https://adopt-dont-shop.s3-us-west-1.amazonaws.com/images/mexican_hairless_105.jpg",
                        approximate_age: 5,
-                       sex: "Male")
+                       sex: "Male",
+                       description: 'Too Cool for School')
   end
 
   it 'should only show pets from that shelter' do
