@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'As a visitor to a shelters pets show page', type: :feature do
+RSpec.describe 'As a visitor to a shelters pets index page', type: :feature do
   before(:each) do
     @shelter1 = Shelter.create!(name: "Joe's Shelter", address: "123 Main St.", city: "Dallas", state: "TX", zip: "75341")
     @shelter2 = Shelter.create!(name: "Jane's Shelter", address: "321 2nd St.", city: "Denver", state: "CO", zip: "80020")
@@ -20,10 +20,11 @@ RSpec.describe 'As a visitor to a shelters pets show page', type: :feature do
                        approximate_age: 5,
                        sex: "Male",
                        description: 'Too Cool for School')
+    
+    visit "/shelters/#{@shelter1.id}/pets"
   end
 
   it 'should only show pets from that shelter' do
-    visit "/shelters/#{@shelter1.id}/pets"
 
     expect(page).to have_content(@pet1.name)
     expect(page).to have_css("img[src*='#{@pet1.image}']")
@@ -38,5 +39,36 @@ RSpec.describe 'As a visitor to a shelters pets show page', type: :feature do
     expect(page).to_not have_content(@pet3.name)
     expect(page).to_not have_css("img[src*='#{@pet3.image}']")
     expect(page).to_not have_content(@pet3.approximate_age)
+  end
+
+  it 'should update a pet' do
+    within ".pets-#{@pet2.id}" do
+      click_on "Update Pet"
+    end
+
+    expect(current_path).to eq("/pets/#{@pet2.id}/edit")
+
+    fill_in :name, with: "Dougie"
+    fill_in :approximate_age, with: 4
+    click_on "Update Pet"
+
+    expect(current_path).to eq("/pets/#{@pet2.id}")
+
+    expect(page).to have_content("Dougie")
+    expect(page).to have_content(4)
+
+    expect(page).to_not have_content("Kat")
+    expect(page).to_not have_content(2)
+  end
+
+  it 'should delete a pet' do
+    within ".pets-#{@pet2.id}" do
+      click_on "Delete Pet"
+    end
+
+    expect(current_path).to eq("/pets")
+    expect(page).to have_content("Tron")
+    expect(page).to have_content("Peppo")
+    expect(page).to_not have_content("Kat")
   end
 end
