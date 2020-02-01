@@ -42,4 +42,10 @@ RSpec.describe 'As a visitor of the Shelter index page' do
     expect(page).to have_content("Joe's Shelter")
     expect(page).to_not have_content("Jane's Shelter")
   end
+
+  it 'should take me to the shelters show page from the name' do
+    click_on @shelter2.name
+
+    expect(current_path).to eq("/shelters/#{@shelter2.id}")
+  end
 end
