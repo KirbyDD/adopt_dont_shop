@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <%= button_to "Shelters", "/shelters", method: :get %>
+        <%= button_to "Pets", "/pets", method: :get %>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
