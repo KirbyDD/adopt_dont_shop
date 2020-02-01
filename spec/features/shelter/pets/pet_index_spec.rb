@@ -77,4 +77,10 @@ RSpec.describe 'As a visitor to a shelters pets index page', type: :feature do
 
     expect(current_path).to eq("/shelters/#{@shelter1.id}")
   end
+
+  it 'should take me to the pets show page from the name' do
+    click_on @pet2.name
+
+    expect(current_path).to eq("/pets/#{@pet2.id}")
+  end
 end
