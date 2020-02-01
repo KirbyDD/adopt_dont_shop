@@ -28,4 +28,17 @@ RSpec.describe 'As a visitor', type: :feature do
     expect(page).to_not have_content(pet2.sex)
     expect(page).to_not have_content(pet2.description)
   end
+
+  it 'should take me to the pets show page from the name' do
+    shelter1 = Shelter.create!(name: "Joe's Shelter", address: "123 Main St.", city: "Dallas", state: "TX", zip: "75341")
+    pet1 = shelter1.pets.create!(name: "Tron",
+                       description: "Too Cool for School",
+                       approximate_age: 3,
+                       sex: "Male")
+
+    visit "/pets/#{pet1.id}"
+    click_on pet1.name
+
+    expect(current_path).to eq("/pets/#{pet1.id}")
+  end
 end
