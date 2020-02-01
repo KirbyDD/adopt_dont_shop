@@ -17,4 +17,11 @@ RSpec.describe 'As a visitor of a shelter show page' do
     expect(page).to_not have_content(@shelter2.name)
     expect(page).to_not have_content("Address: #{@shelter2.address} #{@shelter2.city}, #{@shelter2.state} #{@shelter2.zip}")
   end
+
+  it 'should take me to the shelters pets index page' do
+    visit "/shelters/#{@shelter2.id}"
+    click_on "Shelter's Pets"
+
+    expect(current_path).to eq("/shelters/#{@shelter2.id}/pets")
+  end
 end
