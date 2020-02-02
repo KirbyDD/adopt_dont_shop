@@ -1,3 +1,5 @@
+<main>
+<h2>Create New Pet</h2>
 <%= form_tag "/shelters/#{@shelter.id}/pets", class: "form" do %>
 
 <%= label_tag :name %>
@@ -16,5 +18,5 @@
 <%= text_field_tag :description %>
 
 <%= submit_tag "Create Pet", class: "form-btn" %>
-
 <% end %>
+</main>
