@@ -1,4 +1,7 @@
-<%= form_tag "/pets/#{@pet.id}", method: :patch do %>
+<h2>Update Pet's Information</h2>
+
+<main>
+<%= form_tag "/pets/#{@pet.id}", class: "form", method: :patch do %>
 
 <%= label_tag :name %>
 <%= text_field_tag :name, @pet.name %>
@@ -15,6 +18,7 @@
 <%= label_tag :description %>
 <%= text_field_tag :description, @pet.description %>
 
-<%= submit_tag "Update Pet" %>
+<%= submit_tag "Update Pet", class: "form-btn" %>
 
 <% end %>
+</main>
