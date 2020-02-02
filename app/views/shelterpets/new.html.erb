@@ -1,10 +1,10 @@
-<%= form_tag "/shelters/#{@shelter.id}/pets" do %>
+<%= form_tag "/shelters/#{@shelter.id}/pets", class: "form" do %>
 
 <%= label_tag :name %>
 <%= text_field_tag :name %>
 
 <%= label_tag :image %>
-<%= text_field_tag :image %>
+<%= text_field_tag :image, "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/13002248/GettyImages-187066830.jpg" %>
 
 <%= label_tag :approximate_age%>
 <%= text_field_tag :approximate_age%>
@@ -15,6 +15,6 @@
 <%= label_tag :description %>
 <%= text_field_tag :description %>
 
-<%= submit_tag "Create Pet" %>
+<%= submit_tag "Create Pet", class: "form-btn" %>
 
 <% end %>
